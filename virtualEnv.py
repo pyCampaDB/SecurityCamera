@@ -312,7 +312,7 @@ def run():
                           '2. Run Script\n'
                           '3. Virtual Environment Settings\n'
                           '4. Docker\n'
-                          '5. Upload project to GitHub\n'
+                          '5. GIT\n'
                           '(Other). Exit\n'
                           'Enter the option: ')
 
