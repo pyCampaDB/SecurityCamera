@@ -119,13 +119,11 @@ def run_script(file):
 def cmd():
     command = input(f'{getcwd()}: ')
     try:
-        runSubprocess(
-            command,
-            shell=True,
-            check=True
-        )
+        runSubprocess(command, shell=True, check=True)
     except CalledProcessError as cp:
         print(f'An error occurred: {cp.returncode}')
+    finally:
+        return command
 
 def upload_docker():
     username = getenv('DOCKER_USERNAME', default='default_username')
