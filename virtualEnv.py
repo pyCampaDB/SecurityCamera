@@ -260,7 +260,7 @@ def upload_github():
         
         first_upload = ''
         while first_upload not in ['Y', 'y', 'N', 'n']:
-            first_upload = input('Enter if it is your first commit: ')
+            first_upload = input('Enter if it is your first commit [Y/N]: ')
             if first_upload not in ['Y', 'y', 'N', 'n']:
                 print('\nInvalid option\n')
         
