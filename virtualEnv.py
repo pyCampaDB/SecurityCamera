@@ -281,6 +281,23 @@ def upload_github():
     except Exception as e:
         print(f'Exeption: {e}')
 
+def git_remote_v():
+    try:
+        runSubprocess(
+            'git remote -v', shell=True, check=True
+        )
+    except CalledProcessError as cp:
+        print(f'An error occurred: {cp.returncode}')
+
+def git_remove_origin():
+    try:
+        runSubprocess(
+            'git remote remove origin',
+            shell=True,
+            check=True
+        )
+    except CalledProcessError as cp:
+        print(f'An error occurred: {cp.returncode}')
 
 def run():
     STANDARD_PACKAGE = []
@@ -362,15 +379,22 @@ def run():
                     else: print('\n******************** EXIT DOCKER ********************\n')
           
             else:
-                git_option = '9'
-                while git_option not in ['Y', 'y', 'N', 'n']:
-                    git_option = input('Do you want to upload this project to GitHub? [Y/N]: ')
-                    if git_option not in ['Y', 'y', 'N', 'n']:
-                        print('\nInvalid option\n')
-                if git_option in ['Y', 'y']:
-                    upload_github()
-                else:
-                    print('\nGit pass...\n')
+                
+                git_option = '1'
+                while git_option in ['1', '2', '3']:
+                    git_option = input(
+                        '\n******************** GIT ********************\n\n'
+                        '1. Upload your project to GitHub\n'
+                        '2. git remote -v\n'
+                        '3. git remote remove origin\n\n'
+                        '(Other) Enter your choice: '
+                    )
+
+                    if git_option == '1':
+                        upload_github()
+                    elif git_option == '2': git_remote_v()
+                    elif git_option == '3': git_remove_origin()
+                print('\n******************** EXIT GIT ********************\n\n')
 
 
 ######################################### MAIN ############################################################################
