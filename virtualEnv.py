@@ -265,7 +265,8 @@ def upload_github():
                 print('\nInvalid option\n')
         
         if first_upload in ['Y', 'y']:
-            runSubprocess('git branch -M main', shell=True, check=True)
+            runSubprocess('git branch -M main', 
+                          shell=True, check=True)
             print('\ngit branch\n')
             my_git = input('Enter repository name: ')
             print('\nremote add origin\n')
